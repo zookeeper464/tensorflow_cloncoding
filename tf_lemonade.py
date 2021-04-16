@@ -3,7 +3,7 @@ import pandas as pd
 import tensorflow as tf
 
 # 0. 파일들로부터 데이터를 읽어온다.
-file_path = "path" #변수가 위치한 주소 입력
+file_path = "csv/lemonade.csv" #변수가 위치한 주소 입력
 lemonade = pd.read_csv(file_path)
 
 # 표 데이터의 구조를 나타낸다.
