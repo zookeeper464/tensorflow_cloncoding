@@ -30,7 +30,7 @@ model.compile(loss="mse")
 # ????
 
 # 3. 데이터로 모델을 학습한다.
-model.fit(in_var,de_var, epochs=1000)
+model.fit(in_var,de_var, epochs=1000)#, verbose=0이라하면 출력 하지 않는다는 설정
 #모델을 통해 학습할 횟수(epochs=???)를 지정한다.
 
 # 4. 모델을 이용한다.
