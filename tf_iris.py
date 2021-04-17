@@ -14,7 +14,7 @@ iris = pd.get_dummies(iris) #회귀문제들과 다른 분류문제에서의 특
 
 # 1. 과거의 데이터를 준비한다.
 in_var = iris[["꽃잎길이","꽃잎폭","꽃받침길이","꽃받침폭"]]
-de_var = iris[["품종"]]
+de_var = iris[["품종_setosa","품종_versicolor","품종_virginica"]]
 # 두 변수는 표에서 각 데이터들을 표로 추출한 형태이다.
 # print(in_var.shape, de_var.shape) 
 
