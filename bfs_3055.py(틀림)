@@ -1,0 +1,51 @@
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+n, m = map(int,input().split())
+count, dx, dy, s = 0, [1,0,-1,0], [0,1,0,-1], True
+lst, water, q = [], deque(), deque()
+visited = [[False for i in range(m)] for i in range(n)]
+for i in range(n):
+  temp = list(input().rstrip())
+  lst.append(temp)
+  
+  for idx, j in enumerate(temp):
+    if j == "*":
+      water.append([i,idx])
+    elif j == "S":
+      q.append([i,idx])
+      lst[i][idx] = "."
+      visited[i][idx] = True
+#주어진 리스트를 모두 읽고 여기에 해당하는 값을 정리한다.
+
+while s and q:
+  count += 1
+  #고슴도치가 이동한 시간
+
+  for i in range(len(water)):
+    temp = water.popleft()
+    for j in range(4):
+      x, y = temp[0]+dx[j], temp[1]+dy[j]
+      if 0<=x<n and 0<=y<m and lst[x][y] == ".":
+        lst[x][y] = "*"
+        water.append([x,y])
+  #물이 이동한 자리를 표기
+
+  for i in range(len(q)):
+    temp = q.popleft()
+    for j in range(4):
+      x, y = temp[0]+dx[j], temp[1]+dy[j]
+      if 0<=x<n and 0<=y<m:
+        if lst[x][y] == "." and not visited[x][y]:
+          q.append([x,y])
+        elif lst[x][y] == "D":
+          s = False
+          break
+  #고슴도치가 이동하였을때 물이 있다면 가지 않는다.
+  #고슴도치가 도착지점에 도달하였다면 탈출한다.      
+
+if not s:
+  print(count)
+else:
+  print("KAKTUS")
