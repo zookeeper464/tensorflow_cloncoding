@@ -24,3 +24,5 @@ model.compile(loss = "categorical_crossentropy", metrics = "accuracy")
 model.fit(ind_var, dep_var, epochs=10)
 
 print(pd.DataFrame(model.predict(ind_var[0:5])).round(1))
+
+#model.summery()를 사용하면 모델이 어떻게 구축되는지 요약해서 볼 수 있다.
